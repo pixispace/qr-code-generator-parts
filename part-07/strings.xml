@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">QRCodeGenerator</string>
+    <string name="generate">Generate</string>
+    <string name="swap_colors">Swap colors</string>
+    <string name="text_data">Text data</string>
+    <string name="select_color">Select color</string>
+    <string name="apply">Apply</string>
+</resources>
