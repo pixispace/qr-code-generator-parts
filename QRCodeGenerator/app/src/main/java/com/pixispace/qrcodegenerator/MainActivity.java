@@ -40,10 +40,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setForeColor(int color) {
+        foreColor = color;
         foreColorButton.canvas.setBackgroundColor(color);
     }
 
     private void setBackColor(int color) {
+        backColor = color;
         backColorButton.canvas.setBackgroundColor(color);
     }
 
