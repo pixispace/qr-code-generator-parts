@@ -26,10 +26,10 @@ public class ColorPickerDialog extends Dialog {
         setContentView(binding.getRoot());
         setTitle(R.string.select_color);
         this.selectedColor = selectedColor;
-        setPresets();
 
-        // Call the method
+        setPresets();
         setListeners();
+        updateUI();
     }
 
     private void setPresets() {
@@ -83,6 +83,82 @@ public class ColorPickerDialog extends Dialog {
             }
             dismiss();
         });
+
+        binding.redSlider.addOnChangeListener((slider, value, fromUser) -> {
+            if (fromUser) {
+                clearPresetSelection();
+                int red = (int) value;
+                selectedColor = Color.rgb(red, Color.green(selectedColor), Color.blue(selectedColor));
+                setSelectedColor();
+            }
+        });
+        binding.greenSlider.addOnChangeListener((slider, value, fromUser) -> {
+            if (fromUser) {
+                clearPresetSelection();
+                int green = (int) value;
+                selectedColor = Color.rgb(Color.red(selectedColor), green, Color.blue(selectedColor));
+                setSelectedColor();
+            }
+        });
+        binding.blueSlider.addOnChangeListener((slider, value, fromUser) -> {
+            if (fromUser) {
+                clearPresetSelection();
+                int blue = (int) value;
+                selectedColor = Color.rgb(Color.red(selectedColor), Color.green(selectedColor), blue);
+                setSelectedColor();
+            }
+        });
+
+        binding.preset1Chip.setOnClickListener(v -> applyPreset(v.getTag()));
+        binding.preset2Chip.setOnClickListener(v -> applyPreset(v.getTag()));
+        binding.preset3Chip.setOnClickListener(v -> applyPreset(v.getTag()));
+        binding.preset4Chip.setOnClickListener(v -> applyPreset(v.getTag()));
+        binding.preset5Chip.setOnClickListener(v -> applyPreset(v.getTag()));
+        binding.preset6Chip.setOnClickListener(v -> applyPreset(v.getTag()));
+        binding.preset7Chip.setOnClickListener(v -> applyPreset(v.getTag()));
+        binding.preset8Chip.setOnClickListener(v -> applyPreset(v.getTag()));
+    }
+
+    private void updateUI() {
+        setSelectedColor();
+        setSliderValues();
+        applyPreset(Util.colorToHex(selectedColor, true));
+    }
+
+    private void setSelectedColor() {
+        binding.colorPreview.setCardBackgroundColor(selectedColor);
+    }
+
+    private void clearPresetSelection() {
+        binding.preset1Chip.setChipIcon(null);
+        binding.preset2Chip.setChipIcon(null);
+        binding.preset3Chip.setChipIcon(null);
+        binding.preset4Chip.setChipIcon(null);
+        binding.preset5Chip.setChipIcon(null);
+        binding.preset6Chip.setChipIcon(null);
+        binding.preset7Chip.setChipIcon(null);
+        binding.preset8Chip.setChipIcon(null);
+    }
+
+    private void applyPreset(Object tag) {
+        clearPresetSelection();
+        String hexColor = (tag != null) ? tag.toString() : "";
+        PresetData data = presetMap.get(hexColor);
+        if (data != null) {
+
+            int resId = data.isDarkCheck ? R.drawable.check_black : R.drawable.check_white;
+            data.chip.setChipIconResource(resId);
+
+            selectedColor = Color.parseColor(hexColor);
+            setSelectedColor();
+            setSliderValues();
+        }
+    }
+
+    private void setSliderValues() {
+        binding.redSlider.setValue(Color.red(selectedColor));
+        binding.greenSlider.setValue(Color.green(selectedColor));
+        binding.blueSlider.setValue(Color.blue(selectedColor));
     }
 
     private static class PresetData {
