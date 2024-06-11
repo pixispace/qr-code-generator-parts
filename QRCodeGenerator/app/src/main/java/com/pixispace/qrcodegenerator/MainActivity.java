@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private void setListeners() {
         foreColorButton.container.setOnClickListener(v -> showColorPicker(true));
         backColorButton.container.setOnClickListener(v -> showColorPicker(false));
+        binding.swapButton.setOnClickListener(v -> swapColors());
     }
 
     private void setForeColor(int color) {
@@ -66,5 +67,11 @@ public class MainActivity extends AppCompatActivity {
         } else {
             setBackColor(color);
         }
+    }
+
+    private void swapColors() {
+        int temp = foreColor;
+        setForeColor(backColor);
+        setBackColor(temp);
     }
 }
