@@ -13,19 +13,19 @@ public class Util {
         }
 
         int red = Color.red(color);
-        if (red < 0xf) {
+        if (red <= 0xf) {
             builder.append(0);
         }
         builder.append(Integer.toHexString(red));
 
         int green = Color.green(color);
-        if (green < 0xf) {
+        if (green <= 0xf) {
             builder.append(0);
         }
         builder.append(Integer.toHexString(green));
 
         int blue = Color.blue(color);
-        if (blue < 0xf) {
+        if (blue <= 0xf) {
             builder.append(0);
         }
         builder.append(Integer.toHexString(blue));
