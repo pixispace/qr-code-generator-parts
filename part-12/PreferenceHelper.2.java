@@ -1,9 +1,9 @@
 public class PreferenceHelper {
     private final SharedPreferences preferences;
     private static PreferenceHelper instance;
-    private static final String PREF_LAST_FORE_COLOR = “preferences_helper.last_used_fore_color”;
-    private static final String PREF_LAST_BACK_COLOR = “preferences_helper.last_used_back_color”;
-    private static final String PREF_LAST_TEXT = “preferences_helper.last_used_text”;
+    private static final String PREF_LAST_FORE_COLOR = "preferences_helper.last_used_fore_color";
+    private static final String PREF_LAST_BACK_COLOR = "preferences_helper.last_used_back_color";
+    private static final String PREF_LAST_TEXT = "preferences_helper.last_used_text";
 
     public static PreferenceHelper getInstance() {
         if (instance == null) {
@@ -25,7 +25,7 @@ public class PreferenceHelper {
     }
 
     public String getLastUsedText() {
-        String text = preferences.getString(PREF_LAST_TEXT, “”);
+        String text = preferences.getString(PREF_LAST_TEXT, "");
         return new String(Base64.decode(text, Base64.DEFAULT));
     }
 
