@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">QR Code Generator</string>
+    <string name="generate">Generate</string>
+    <string name="swap_colors">Swap colors</string>
+    <string name="text_data">Text data</string>
+    <string name="select_color">Select color</string>
+    <string name="apply">Apply</string>
+    <string name="fore_color">Fore color</string>
+    <string name="back_color">Back color</string>
+    <string name="making_qr_code">Making QR Code…</string>
+    <string name="small">Small</string>
+    <string name="medium">Medium</string>
+    <string name="large">Large</string>
+    <string name="qr_code">QR Code</string>
+    <string name="no_text">Text to encode was not provided.</string>
+    <string name="insufficient_information">Insufficient information</string>
+</resources>
