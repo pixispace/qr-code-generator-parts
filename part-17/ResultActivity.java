@@ -94,6 +94,7 @@ public class ResultActivity extends AppCompatActivity {
                 .setPositiveButton(android.R.string.ok, (dialog, which) -> {
                     dialog.dismiss();
                     getOnBackPressedDispatcher().onBackPressed();
-                });
+                })
+                .show();
     }
 }
